@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://uvtd1vvu81t7"]
+[gd_scene load_steps=53 format=4 uid="uid://uvtd1vvu81t7"]
 
 [ext_resource type="Script" uid="uid://c7awqbsn7er8y" path="res://character_body_2d.gd" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://bg62bikfjdgq7" path="res://Terrain/Water/Water.png" id="2_0hol4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bb8khhoi134e8" path="res://Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="6_kdubu"]
 [ext_resource type="Texture2D" uid="uid://bjmy7sdhgn7hk" path="res://Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="6_rj586"]
 [ext_resource type="Script" uid="uid://i7f66eqkd805" path="res://enemy.gd" id="7_rj586"]
+[ext_resource type="Script" uid="uid://cm1hhp0tytnms" path="res://spawner.gd" id="9_4d7sh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdubu"]
 texture = ExtResource("2_0hol4")
@@ -1065,8 +1066,8 @@ texture = ExtResource("3_epypp")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_epypp")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
-size = Vector2(25, 40)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4d7sh"]
+radius = 31.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24dk6"]
 atlas = ExtResource("6_rj586")
@@ -1375,3 +1376,7 @@ editor_draw_limits = true
 sprite_frames = SubResource("SpriteFrames_k73cj")
 animation = &"walk"
 autoplay = "idle"
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(670, -630)
+script = ExtResource("9_4d7sh")
