@@ -120,5 +120,6 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0.25, 8.5)
 shape = SubResource("RectangleShape2D_kpjcp")

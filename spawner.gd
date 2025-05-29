@@ -19,6 +19,7 @@ func _process(delta):
 
 func spawn_enemy():
 	var enemy_instance = enemy_scene.instantiate()
+	enemy_instance.z_index = 1
 	
 	var random_angle = randf() * 2 * PI
 	var random_distance = randf_range(min_spawn_distance, max_spawn_distance)
