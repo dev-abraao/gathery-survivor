@@ -1066,8 +1066,8 @@ texture = ExtResource("3_epypp")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_epypp")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4d7sh"]
-radius = 31.5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
+size = Vector2(24, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24dk6"]
 atlas = ExtResource("6_rj586")
@@ -1347,9 +1347,8 @@ position = Vector2(185, -520)
 script = ExtResource("7_rj586")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(0.5, 10)
+position = Vector2(0, 27.5)
 shape = SubResource("RectangleShape2D_rj586")
-disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = SubResource("SpriteFrames_24dk6")
