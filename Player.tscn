@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://c7awqbsn7er8y" path="res://character_body_2d.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://bb8khhoi134e8" path="res://Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="2_kne1u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
-size = Vector2(41, 19)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
 atlas = ExtResource("2_kne1u")
 region = Rect2(0, 0, 192, 192)
@@ -103,12 +100,11 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjcp"]
+size = Vector2(43.5, 41)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kpjcp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 18.5)
-shape = SubResource("RectangleShape2D_d21ai")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
@@ -122,3 +118,7 @@ editor_draw_limits = true
 sprite_frames = SubResource("SpriteFrames_k73cj")
 animation = &"walk"
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 8.5)
+shape = SubResource("RectangleShape2D_kpjcp")
