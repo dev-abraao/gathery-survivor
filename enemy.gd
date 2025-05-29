@@ -1,18 +1,28 @@
 extends CharacterBody2D
 
 @onready var player = get_parent().get_node("Player")
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const speed = 100.0
 
 func _physics_process(delta: float) -> void:
-	if player:
-		position += (player.position - position).normalized() * speed * delta
-	else:
-		# Try to find player again in case it was added after this node was initializedteste
-		player = get_tree().get_first_node_in_group("Player")
+    if not player:
+        # Try to find player again in case it was added after this node was initialized
+        player = get_tree().get_first_node_in_group("Player")
+        return
 
-	if position.distance_to(player.position) < 50.0:
-		# If the enemy is close enough to the player, stop moving
-		return
+    var distance_to_player = position.distance_to(player.position)
 
-	move_and_slide()
+    if distance_to_player < 50.0:
+        animated_sprite.play("idle")
+        return
+
+    # Move towards player
+    var direction = (player.position - position).normalized()
+    velocity = direction * speed
+
+    # Play walk animation and flip sprite
+    animated_sprite.play("walk")
+    animated_sprite.flip_h = (player.position.x < position.x)
+
+    move_and_slide()
