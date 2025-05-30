@@ -11,9 +11,8 @@ config_version=5
 [application]
 
 config/name="gatherysurvivor"
-run/main_scene="uid://uvtd1vvu81t7"
+run/main_scene="uid://dy7qml581l5hq"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [rendering]
 
