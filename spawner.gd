@@ -45,7 +45,11 @@ func is_valid_spawn_position(world_pos: Vector2) -> bool:
             var source_id = child.get_cell_source_id(tile_pos)
             
             # Se é água (source_id = 0 na layer Water), não spawnar
-            if child.name == "Water" and source_id != -1:
+            if child.name == "Water"  and source_id != -1:
+                return false
+            if child.name == "Foam"  and source_id != -1:
+                return false
+            if child.name == "Rocks"  and source_id != -1:
                 return false
     
     return true
