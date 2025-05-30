@@ -11,15 +11,13 @@ var is_attacking = false
 var attack_timer = 0.0
 var max_health = 30
 var current_health = 30
-var is_dead = false  # <- Adicionar esta variável
+var is_dead = false
 
 func _ready():
-    # Adicionar ao grupo de inimigos
     add_to_group("enemies")
     current_health = max_health
 
 func _physics_process(delta: float) -> void:
-    # Se está morto, não fazer nada
     if is_dead:
         return
         
@@ -52,7 +50,6 @@ func _physics_process(delta: float) -> void:
     move_and_slide()
 
 func attack():
-    # Não atacar se está morto
     if is_dead:
         return
         
@@ -80,14 +77,12 @@ func deal_damage_to_player():
         player.take_damage(50)
 
 func take_damage(amount: int):
-    # Não tomar dano se já está morto
     if is_dead:
         return
         
     current_health -= amount
     print("Inimigo levou ", amount, " de dano! Vida: ", current_health)
     
-    # Efeito visual (opcional)
     modulate = Color.RED
     var tween = create_tween()
     tween.tween_property(self, "modulate", Color.WHITE, 0.1)
@@ -96,27 +91,22 @@ func take_damage(amount: int):
         die()
 
 func die():
-    # Evitar morrer duas vezes
     if is_dead:
         return
         
-    is_dead = true  # <- Marcar como morto PRIMEIRO
+    is_dead = true
     print("Inimigo morreu!")
 
     velocity = Vector2.ZERO
     is_attacking = false
 
-    # Desabilitar colisões
     set_collision_layer(0)
     set_collision_mask(0)
     
-    # Remover do grupo de inimigos para que weapon pare de mirar nele
     remove_from_group("enemies")
 
-    # Tocar animação de morte
     animated_sprite.play("death")
 
-    # Timer para destruir
     var death_timer = Timer.new()
     add_child(death_timer)
     death_timer.wait_time = 1.4

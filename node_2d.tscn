@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://uvtd1vvu81t7"]
+[gd_scene load_steps=6 format=4 uid="uid://uvtd1vvu81t7"]
 
 [ext_resource type="PackedScene" uid="uid://dwaj10bvg23dd" path="res://Scenes/World/World.tscn" id="1_0hol4"]
-[ext_resource type="PackedScene" uid="uid://dpsgihkdgfhi6" path="res://Scenes/Enemies/Goblin/Enemy.tscn" id="5_kdubu"]
 [ext_resource type="PackedScene" uid="uid://cc1kimtooevdn" path="res://Scenes/Trees/Trees.tscn" id="5_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://b3b80psk6gogb" path="res://Scenes/Player/Player.tscn" id="6_d21ai"]
 [ext_resource type="PackedScene" uid="uid://buh75rwtk5pca" path="res://Scenes/Decorations/Decorations.tscn" id="6_kdubu"]
@@ -11,10 +10,6 @@
 y_sort_enabled = true
 
 [node name="World" parent="." instance=ExtResource("1_0hol4")]
-
-[node name="Enemy" parent="." instance=ExtResource("5_kdubu")]
-z_index = 1
-position = Vector2(185, -520)
 
 [node name="Player" parent="." instance=ExtResource("6_d21ai")]
 z_index = 1

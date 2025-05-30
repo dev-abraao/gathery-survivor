@@ -64,22 +64,17 @@ func cleanup_hit_cooldowns(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("enemies") and is_instance_valid(body):
-		# Verificar se o inimigo está em cooldown
 		if body in enemies_hit:
 			return
 		
-		print("Espada acertou inimigo!")
 		
-		# Causar dano ao inimigo
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 			
-			# Adicionar ao cooldown apenas se o inimigo ainda estiver vivo
 			if is_instance_valid(body):
 				enemies_hit[body] = hit_cooldown
 
 func _on_body_exited(body):
-	# Quando inimigo sai da área ou morre, remove do cooldown
 	if body in enemies_hit:
 		enemies_hit.erase(body)
 
