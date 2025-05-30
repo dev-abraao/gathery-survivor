@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://uvtd1vvu81t7"]
+[gd_scene load_steps=8 format=4 uid="uid://uvtd1vvu81t7"]
 
 [ext_resource type="PackedScene" uid="uid://dwaj10bvg23dd" path="res://World.tscn" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://dpsgihkdgfhi6" path="res://Enemy.tscn" id="5_kdubu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3b80psk6gogb" path="res://Player.tscn" id="6_d21ai"]
 [ext_resource type="PackedScene" uid="uid://buh75rwtk5pca" path="res://Decorations.tscn" id="6_kdubu"]
 [ext_resource type="PackedScene" uid="uid://cusur0uf5cq64" path="res://Spawner.tscn" id="7_d21ai"]
+[ext_resource type="PackedScene" uid="uid://c322uym7gg2ac" path="res://weapon.tscn" id="7_rj586"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -29,3 +30,7 @@ tile_map_data = PackedByteArray("AAD8/+b/AAACAAAAAADF/5P/AAACAAAAAACo/5P/AAACAAA
 
 [node name="Decoration" parent="." instance=ExtResource("6_kdubu")]
 tile_map_data = PackedByteArray("AAC3/5v/AgABAAMAAABoALn/AQABAAAAAACO/7v/AwAAAAEAAABGAL3/BAAAAAEAAABQALb/BAAAAAEAAABWAML/BAAAAAEAAABTANH/BAAAAAEAAABrAMv/BAAAAAEAAABoANv/BAAAAAEAAAA=")
+
+[node name="Weapon" parent="." instance=ExtResource("7_rj586")]
+z_index = 1
+position = Vector2(-2, 0)
