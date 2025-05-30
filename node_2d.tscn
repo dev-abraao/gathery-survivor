@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=4 uid="uid://uvtd1vvu81t7"]
 
-[ext_resource type="PackedScene" uid="uid://dwaj10bvg23dd" path="res://World.tscn" id="1_0hol4"]
-[ext_resource type="PackedScene" uid="uid://dpsgihkdgfhi6" path="res://Enemy.tscn" id="5_kdubu"]
-[ext_resource type="PackedScene" uid="uid://cc1kimtooevdn" path="res://Trees.tscn" id="5_q6r6c"]
-[ext_resource type="PackedScene" uid="uid://b3b80psk6gogb" path="res://Player.tscn" id="6_d21ai"]
-[ext_resource type="PackedScene" uid="uid://buh75rwtk5pca" path="res://Decorations.tscn" id="6_kdubu"]
-[ext_resource type="PackedScene" uid="uid://cusur0uf5cq64" path="res://Spawner.tscn" id="7_d21ai"]
-[ext_resource type="PackedScene" uid="uid://c322uym7gg2ac" path="res://weapon.tscn" id="7_rj586"]
+[ext_resource type="PackedScene" uid="uid://dwaj10bvg23dd" path="res://Scenes/World/World.tscn" id="1_0hol4"]
+[ext_resource type="PackedScene" uid="uid://dpsgihkdgfhi6" path="res://Scenes/Enemies/Goblin/Enemy.tscn" id="5_kdubu"]
+[ext_resource type="PackedScene" uid="uid://cc1kimtooevdn" path="res://Scenes/Trees/Trees.tscn" id="5_q6r6c"]
+[ext_resource type="PackedScene" uid="uid://b3b80psk6gogb" path="res://Scenes/Player/Player.tscn" id="6_d21ai"]
+[ext_resource type="PackedScene" uid="uid://buh75rwtk5pca" path="res://Scenes/Decorations/Decorations.tscn" id="6_kdubu"]
+[ext_resource type="PackedScene" uid="uid://cusur0uf5cq64" path="res://Scenes/Spawner/Spawner.tscn" id="7_d21ai"]
+[ext_resource type="PackedScene" uid="uid://c322uym7gg2ac" path="res://Scenes/Weapons/weapon.tscn" id="7_rj586"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
