@@ -6,7 +6,7 @@ extends Area2D
 var player: CharacterBody2D
 var orbit_radius: float = 80.0  # Distância da espada do player
 var orbit_speed: float = 3.0    # Velocidade de rotação
-var current_angle: float = 0.0  # Ângulo atual da espada
+var current_angle: float = 0.0
 
 var damage: int = 10
 var hit_cooldown: float = 0.5   # Tempo entre danos no mesmo inimigo

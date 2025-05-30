@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpsgihkdgfhi6"]
+[gd_scene load_steps=39 format=3 uid="uid://dpsgihkdgfhi6"]
 
 [ext_resource type="Script" uid="uid://i7f66eqkd805" path="res://enemy.gd" id="1_s7bn3"]
 [ext_resource type="Texture2D" uid="uid://bjmy7sdhgn7hk" path="res://Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_2hac7"]
+[ext_resource type="Texture2D" uid="uid://dinn0mf67uaaf" path="res://Factions/Knights/Troops/Dead/Dead.png" id="3_2hac7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
 size = Vector2(24, 5)
@@ -29,6 +30,62 @@ region = Rect2(768, 384, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_540hr"]
 atlas = ExtResource("2_2hac7")
 region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6d4v"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp131"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6do27"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvmyp"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nxwx"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52xpa"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdgko"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4qr3"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73x2u"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iwxp"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v6dm"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r3mv"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jccr3"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd3y4"]
+atlas = ExtResource("3_2hac7")
+region = Rect2(768, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k73cj"]
 atlas = ExtResource("2_2hac7")
@@ -109,6 +166,53 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_e6d4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp131")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6do27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvmyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nxwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52xpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdgko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4qr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73x2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iwxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v6dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r3mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jccr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd3y4")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_k73cj")
 }, {
 "duration": 1.0,
@@ -166,5 +270,4 @@ shape = SubResource("RectangleShape2D_rj586")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_24dk6")
-animation = &"attack"
-frame_progress = 1.0
+animation = &"death"

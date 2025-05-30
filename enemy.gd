@@ -11,6 +11,7 @@ var is_attacking = false
 var attack_timer = 0.0
 var max_health = 30
 var current_health = 30
+var is_dead = false  # <- Adicionar esta variável
 
 func _ready():
     # Adicionar ao grupo de inimigos
@@ -18,6 +19,10 @@ func _ready():
     current_health = max_health
 
 func _physics_process(delta: float) -> void:
+    # Se está morto, não fazer nada
+    if is_dead:
+        return
+        
     if not player:
         player = get_tree().get_first_node_in_group("Player")
         return
@@ -47,6 +52,10 @@ func _physics_process(delta: float) -> void:
     move_and_slide()
 
 func attack():
+    # Não atacar se está morto
+    if is_dead:
+        return
+        
     is_attacking = true
     attack_timer = attack_cooldown
     velocity = Vector2.ZERO
@@ -58,16 +67,23 @@ func attack():
         animated_sprite.animation_finished.connect(_on_attack_finished)
 
 func _on_attack_finished():
-    if animated_sprite.animation == "attack":
+    if animated_sprite.animation == "attack" and not is_dead:
         is_attacking = false
         deal_damage_to_player()
 
 func deal_damage_to_player():
+    if is_dead:
+        return
+        
     var distance_to_player = position.distance_to(player.position)
     if distance_to_player <= attack_range:
         print("Inimigo causou dano ao player!")
 
 func take_damage(amount: int):
+    # Não tomar dano se já está morto
+    if is_dead:
+        return
+        
     current_health -= amount
     print("Inimigo levou ", amount, " de dano! Vida: ", current_health)
     
@@ -80,5 +96,30 @@ func take_damage(amount: int):
         die()
 
 func die():
+    # Evitar morrer duas vezes
+    if is_dead:
+        return
+        
+    is_dead = true  # <- Marcar como morto PRIMEIRO
     print("Inimigo morreu!")
-    queue_free()
+
+    velocity = Vector2.ZERO
+    is_attacking = false
+
+    # Desabilitar colisões
+    set_collision_layer(0)
+    set_collision_mask(0)
+    
+    # Remover do grupo de inimigos para que weapon pare de mirar nele
+    remove_from_group("enemies")
+
+    # Tocar animação de morte
+    animated_sprite.play("death")
+
+    # Timer para destruir
+    var death_timer = Timer.new()
+    add_child(death_timer)
+    death_timer.wait_time = 1.4
+    death_timer.one_shot = true
+    death_timer.timeout.connect(queue_free)
+    death_timer.start()
