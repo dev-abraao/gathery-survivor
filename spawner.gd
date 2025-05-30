@@ -7,8 +7,8 @@ extends Node2D
 var spawn_timer : float = 2.5
 var time_elapsed : float = 0.0
 
-var min_spawn_distance = 600.0
-var max_spawn_distance = 800.0
+var min_spawn_distance = 750
+var max_spawn_distance = 900
 
 func _process(delta):
     time_elapsed += delta

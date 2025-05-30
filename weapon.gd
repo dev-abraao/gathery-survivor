@@ -42,7 +42,7 @@ func _process(delta):
 	global_position = player.global_position + offset
 	
 	# Rotacionar sprite para dar efeito de "corte"
-	sprite.rotation = current_angle + PI/2  # +90 graus para alinhar
+	sprite.rotation = current_angle + PI / 4 
 	
 	# Limpar cooldowns expirados
 	cleanup_hit_cooldowns(delta)
