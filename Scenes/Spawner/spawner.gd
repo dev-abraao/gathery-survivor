@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player = get_parent().get_node("Player")
-@onready var enemy_scene = preload("res://Scenes/Enemies/Goblin/enemy.tscn")
+@onready var enemy_scene = preload("res://Scenes/Enemies/Goblin/Enemy.tscn")
 @onready var world_tilemap = get_parent().get_node("World")  # Ajuste o caminho
 
 var spawn_timer : float = 2.5

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const speed = 100.0
-const attack_range = 50.0
+const attack_range = 100.0
 const attack_cooldown = 1.5
 
 var is_attacking = false
@@ -77,7 +77,7 @@ func deal_damage_to_player():
         
     var distance_to_player = position.distance_to(player.position)
     if distance_to_player <= attack_range:
-        print("Inimigo causou dano ao player!")
+        player.take_damage(50)
 
 func take_damage(amount: int):
     # Não tomar dano se já está morto
