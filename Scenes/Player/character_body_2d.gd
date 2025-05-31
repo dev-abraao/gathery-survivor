@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 250.0
 var health = 100.0
+var is_dead = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
@@ -26,11 +27,14 @@ func take_damage(amount:float):
 	
 	if new_health <= 0:
 		die()
+		is_dead = true
 	else:
 		health = new_health
 		print("Vida do player", health)
 
 func die():
+	if is_dead:
+		return
 	set_process_input(false)
 	set_physics_process(false)
 	velocity = Vector2.ZERO
