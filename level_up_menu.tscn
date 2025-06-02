@@ -1,0 +1,193 @@
+[gd_scene load_steps=3 format=3 uid="uid://36p42wf2bgy4"]
+
+[ext_resource type="Script" uid="uid://54cntb76cnrf" path="res://level_up_menu.gd" id="1_level_menu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.2, 0.2, 0.3, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.8, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="LevelUpMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_level_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "🎉 LEVEL UP! 🎉"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Choose an upgrade:"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerSection" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "🧙 PLAYER"
+horizontal_alignment = 1
+
+[node name="PlayerPanel" type="Panel" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="PlayerOptions" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection/PlayerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection/PlayerPanel/PlayerOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "❤️ +30 Health
+Restore to full HP"
+
+[node name="SpeedButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection/PlayerPanel/PlayerOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "⚡ +20% Speed
+Move faster"
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+
+[node name="WeaponSection" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WeaponTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 28
+text = "⚔️ WEAPONS"
+horizontal_alignment = 1
+
+[node name="WeaponPanel" type="Panel" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="WeaponOptions" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection/WeaponPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DamageButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection/WeaponPanel/WeaponOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "💥 +50% Damage
+More powerful attacks"
+
+[node name="RotationButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection/WeaponPanel/WeaponOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "🌪️ +30% Rotation
+Faster weapon spin"
+
+[node name="NewWeaponButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection/WeaponPanel/WeaponOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "⚔️ New Weapon
+Add another sword"
+
+[node name="Footer" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 14
+text = "Click on any option to continue"
+horizontal_alignment = 1

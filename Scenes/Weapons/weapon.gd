@@ -4,53 +4,45 @@ extends Area2D
 @onready var collision = $CollisionShape2D
 
 var player: CharacterBody2D
-var orbit_radius: float = 80.0  # Distância da espada do player
-var orbit_speed: float = 3.0    # Velocidade de rotação
+var orbit_radius: float = 80.0
+var orbit_speed: float = 3.0
 var current_angle: float = 0.0
 
 var damage: int = 10
-var hit_cooldown: float = 0.5   # Tempo entre danos no mesmo inimigo
-var enemies_hit: Dictionary = {}  # Controlar cooldown por inimigo
+var hit_cooldown: float = 0.5
+var enemies_hit: Dictionary = {}
 
 func _ready():
 	print("Weapon iniciada!")
-	
-	# Encontrar o player
+
 	player = get_tree().get_first_node_in_group("Player")
 	if not player:
 		print("Player não encontrado!")
 		return
-	
-	# Conectar sinais de colisão
+
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
-	
+
 	if not body_exited.is_connected(_on_body_exited):
 		body_exited.connect(_on_body_exited)
 
 func _process(delta):
 	if not player:
 		return
-	
-	# Atualizar ângulo de rotação (gira ao redor do player)
+
 	current_angle += orbit_speed * delta
 	if current_angle > 2 * PI:
 		current_angle -= 2 * PI
-	
-	# Calcular nova posição ao redor do player
+
 	var offset = Vector2(cos(current_angle), sin(current_angle)) * orbit_radius
 	global_position = player.global_position + offset
-	
-	# Rotacionar sprite para dar efeito de "corte"
+
 	sprite.rotation = current_angle + PI / 4 
-	
-	# Limpar cooldowns expirados
 	cleanup_hit_cooldowns(delta)
 
 func cleanup_hit_cooldowns(delta):
 	var keys_to_remove = []
 	for enemy in enemies_hit.keys():
-		# Verificar se o inimigo ainda existe
 		if not is_instance_valid(enemy):
 			keys_to_remove.append(enemy)
 			continue

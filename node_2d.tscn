@@ -9,11 +9,9 @@
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
-[node name="World" parent="." instance=ExtResource("1_0hol4")]
-
 [node name="Player" parent="." instance=ExtResource("6_d21ai")]
 z_index = 1
-position = Vector2(-273, -476)
+position = Vector2(-274, -476)
 
 [node name="Spawner" parent="." instance=ExtResource("7_d21ai")]
 
@@ -24,3 +22,5 @@ tile_map_data = PackedByteArray("AAD8/+b/AAACAAAAAADF/5P/AAACAAAAAACo/5P/AAACAAA
 
 [node name="Decoration" parent="." instance=ExtResource("6_kdubu")]
 tile_map_data = PackedByteArray("AAC3/5v/AgABAAMAAABoALn/AQABAAAAAACO/7v/AwAAAAEAAABGAL3/BAAAAAEAAABQALb/BAAAAAEAAABWAML/BAAAAAEAAABTANH/BAAAAAEAAABrAMv/BAAAAAEAAABoANv/BAAAAAEAAAA=")
+
+[node name="World" parent="." instance=ExtResource("1_0hol4")]
