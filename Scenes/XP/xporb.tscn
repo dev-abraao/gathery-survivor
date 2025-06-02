@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://602x71d4i27m"]
 
 [ext_resource type="Script" uid="uid://dkeak4278xo6w" path="res://Scenes/XP/xp.gd" id="1_o8daq"]
-[ext_resource type="Texture2D" uid="uid://bu0tlitkxo6qw" path="res://Scenes/XP/Experience_orb_2.png" id="2_0um7p"]
+[ext_resource type="Texture2D" uid="uid://cob71u40htrex" path="res://Scenes/XP/xporb.png" id="2_1ymku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ly50w"]
 size = Vector2(26, 24)
@@ -10,8 +10,8 @@ size = Vector2(26, 24)
 script = ExtResource("1_o8daq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0976562, 0.0898438)
-texture = ExtResource("2_0um7p")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_1ymku")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ly50w")

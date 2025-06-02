@@ -18,6 +18,7 @@ func _ready() -> void:
 		var max_health = player.get_max_health()
 		$HP/HealthBar.value = health
 		$HP/HealthBar.max_value = max_health
+		$HP/Label.text = str(int(health))
 		$XPBar.value = player.get_xp()
 		$XPBar.max_value = player.get_xp_to_next_level()
 
@@ -27,6 +28,7 @@ func set_health(new_health) -> void:
 	
 	health_tween = create_tween()
 	health_tween.tween_property($HP/HealthBar, "value", new_health, animation_duration)
+	$HP/Label.text = str(int(new_health))
 	
 	print("UI: Health updated to ", new_health)
 

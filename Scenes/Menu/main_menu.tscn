@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://colydnuie82mx" path="res://Scenes/Menu/main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://wmi71oy573bj" path="res://Assets/UI/Ribbons/Ribbon_Blue_3Slides.png" id="2_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://b47kpdb13mxbd" path="res://Assets/background.png" id="2_jix8l"]
+[ext_resource type="Texture2D" uid="uid://b47kpdb13mxbd" path="res://Scenes/Menu/background.png" id="2_jix8l"]
 [ext_resource type="FontFile" uid="uid://dtd1g7uutsg1l" path="res://Assets/The Centurion .ttf" id="3_jix8l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]

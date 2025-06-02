@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu0tlitkxo6qw"
-path="res://.godot/imported/Experience_orb_2.png-69bb8dc7c94481c54d565a59f1d2c58b.ctex"
+uid="uid://b47kpdb13mxbd"
+path="res://.godot/imported/background.png-620d444daa5e958c311c008509b8520f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/XP/Experience_orb_2.png"
-dest_files=["res://.godot/imported/Experience_orb_2.png-69bb8dc7c94481c54d565a59f1d2c58b.ctex"]
+source_file="res://Scenes/Menu/background.png"
+dest_files=["res://.godot/imported/background.png-620d444daa5e958c311c008509b8520f.ctex"]
 
 [params]
 

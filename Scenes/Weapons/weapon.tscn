@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c322uym7gg2ac"]
 
 [ext_resource type="Script" uid="uid://cxot7hsw65iap" path="res://Scenes/Weapons/weapon.gd" id="1_weapon"]
-[ext_resource type="Texture2D" uid="uid://bqsmigtqrai5x" path="res://Assets/sword2.png" id="2_07w45"]
+[ext_resource type="Texture2D" uid="uid://bqsmigtqrai5x" path="res://Scenes/Weapons/sword2.png" id="2_07w45"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_07w45"]
 
