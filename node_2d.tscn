@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://uvtd1vvu81t7"]
+[gd_scene load_steps=7 format=4 uid="uid://uvtd1vvu81t7"]
 
 [ext_resource type="PackedScene" uid="uid://dwaj10bvg23dd" path="res://Scenes/World/World.tscn" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://cc1kimtooevdn" path="res://Scenes/Trees/Trees.tscn" id="5_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://b3b80psk6gogb" path="res://Scenes/Player/Player.tscn" id="6_d21ai"]
 [ext_resource type="PackedScene" uid="uid://buh75rwtk5pca" path="res://Scenes/Decorations/Decorations.tscn" id="6_kdubu"]
-[ext_resource type="PackedScene" uid="uid://cusur0uf5cq64" path="res://Scenes/Spawner/Spawner.tscn" id="7_d21ai"]
+[ext_resource type="PackedScene" uid="uid://cusur0uf5cq64" path="res://Spawner/Spawner.tscn" id="7_d21ai"]
+[ext_resource type="PackedScene" uid="uid://bq3h7kw8x5vmp" path="res://Scenes/Music Manager/MusicManager.tscn" id="8_music"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -14,6 +15,8 @@ z_index = 1
 position = Vector2(-274, -476)
 
 [node name="Spawner" parent="." instance=ExtResource("7_d21ai")]
+
+[node name="MusicManager" parent="." instance=ExtResource("8_music")]
 
 [node name="Trees" parent="." instance=ExtResource("5_q6r6c")]
 z_index = 1

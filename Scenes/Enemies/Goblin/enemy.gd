@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_parent().get_node("Player")
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var damage_sound: AudioStreamPlayer2D = $DamageSound  # ← Adicionar esta linha
 
 const speed = 100.0
 const attack_range = 100.0
@@ -16,6 +17,17 @@ var is_dead = false
 func _ready():
 	add_to_group("enemies")
 	current_health = max_health
+	
+	# Carregar som de dano
+	var damage_sound_path = "res://Audio/SFX/hi3.wav"
+	var damage_audio = load(damage_sound_path)
+	
+	if damage_audio and damage_sound:
+		damage_sound.stream = damage_audio
+		damage_sound.volume_db = -10.0  # Ajustar volume
+		print("✅ Som de dano carregado para inimigo")
+	else:
+		print("❌ Som de dano não encontrado em:", damage_sound_path)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -83,6 +95,12 @@ func take_damage(amount: int):
 	current_health -= amount
 	print("Inimigo levou ", amount, " de dano! Vida: ", current_health)
 	
+	# TOCAR SOM DE DANO
+	if damage_sound and damage_sound.stream:
+		damage_sound.play()
+		print("🔊 Som de dano tocado!")
+	
+	# Efeito visual de dano
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.1)

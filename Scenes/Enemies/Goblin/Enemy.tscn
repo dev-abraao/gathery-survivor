@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://dpsgihkdgfhi6"]
+[gd_scene load_steps=40 format=3 uid="uid://dpsgihkdgfhi6"]
 
 [ext_resource type="Script" uid="uid://i7f66eqkd805" path="res://Scenes/Enemies/Goblin/enemy.gd" id="1_s7bn3"]
 [ext_resource type="Texture2D" uid="uid://bjmy7sdhgn7hk" path="res://Assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_2hac7"]
 [ext_resource type="Texture2D" uid="uid://dinn0mf67uaaf" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="3_2hac7"]
+[ext_resource type="AudioStream" uid="uid://bhyplyl2q6tkp" path="res://Audio/SFX/Hit.wav" id="4_xr3qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
 size = Vector2(24, 5)
@@ -271,3 +272,7 @@ shape = SubResource("RectangleShape2D_rj586")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_24dk6")
 animation = &"attack"
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, 0)
+stream = ExtResource("4_xr3qn")

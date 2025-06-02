@@ -8,6 +8,7 @@ var is_dead = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
 @onready var level_up_menu_scene = preload("res://Scenes/Leveling Menu/level_up_menu.tscn")
+@onready var walk_sound: AudioStreamPlayer2D = $WalkSound  # ← Adicionar esta linha
 
 var weapons: Array = []
 var current_level: int = 1
@@ -19,9 +20,30 @@ var current_speed: float = 250.0
 var damage_multiplier: float = 1.0
 var rotation_multiplier: float = 1.0
 
+var is_walking: bool = false
+
 func _ready():
 	add_to_group("Player")
 	call_deferred("setup_weapon")
+	setup_walk_sound()
+
+func setup_walk_sound():
+	var walk_sound_path = "res://Audio/SFX/walk.wav"
+	var walk_audio = load(walk_sound_path)
+	
+	if walk_audio and walk_sound:
+		walk_sound.stream = walk_audio
+		walk_sound.volume_db = -15.0
+		
+		# CORREÇÃO: Usar os tipos corretos do Godot 4
+		if walk_audio is AudioStreamWAV:  # ← Mudou de AudioStreamWav para AudioStreamWAV
+			walk_audio.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		elif walk_audio is AudioStreamOggVorbis:
+			walk_audio.loop = true
+		
+		print("✅ Som de passos carregado com loop!")
+	else:
+		print("❌ Som de passos não encontrado em:", walk_sound_path)
 
 func setup_weapon():
 	create_weapon()
@@ -185,8 +207,32 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * current_speed
 		animated_sprite.play("walk")
 		animated_sprite.flip_h = direction.x < 0
+		
+		# SOM DE PASSOS CONTÍNUO
+		if not is_walking:
+			start_walking_sound()
+			is_walking = true
+		# Garantir que continue tocando
+		elif not walk_sound.playing:
+			walk_sound.play()
+			
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, current_speed * delta * 10)
 		animated_sprite.play("idle")
+		
+		# PARAR SOM quando parar de andar
+		if is_walking:
+			stop_walking_sound()
+			is_walking = false
 
 	move_and_slide()
+
+func start_walking_sound():
+	if walk_sound and walk_sound.stream:
+		walk_sound.play()
+		print("🚶 Som de passos em loop iniciado!")
+
+func stop_walking_sound():
+	if walk_sound and walk_sound.playing:
+		walk_sound.stop()
+		print("🛑 Som de passos parado!")
