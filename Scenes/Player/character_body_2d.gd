@@ -7,7 +7,7 @@ var is_dead = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
-@onready var level_up_menu_scene = preload("res://level_up_menu.tscn")
+@onready var level_up_menu_scene = preload("res://Scenes/Leveling Menu/level_up_menu.tscn")
 
 var weapons: Array = []
 var current_level: int = 1

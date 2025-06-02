@@ -9,11 +9,9 @@ var base_spawn_timer: float = 2.5
 var current_spawn_timer: float = 2.5
 var time_elapsed: float = 0.0
 
-# Configurações de dificuldade
-var min_spawn_timer: float = 0.3  # Mínimo de tempo entre spawns
-var timer_reduction_per_level: float = 0.1  # Redução por nível
-
-# Spawn múltiplo por nível
+# Dificuldade e spawn dinâmico
+var min_spawn_timer: float = 0.2
+var timer_reduction_per_level: float = 0.1
 var enemies_per_spawn: int = 1
 var max_enemies_per_spawn: int = 5
 
@@ -25,8 +23,7 @@ func _ready():
 
 func _process(delta):
 	time_elapsed += delta
-	
-	# Atualizar dificuldade baseada no nível do player
+
 	update_difficulty()
 	
 	if time_elapsed >= current_spawn_timer:
@@ -36,31 +33,26 @@ func _process(delta):
 func update_difficulty():
 	if not player:
 		return
-	
+
 	var player_level = player.get_level()
-	
-	# Reduzir tempo entre spawns (mais rápido conforme sobe de nível)
+
 	current_spawn_timer = max(
 		min_spawn_timer, 
 		base_spawn_timer - (timer_reduction_per_level * (player_level - 1))
 	)
-	
-	# Aumentar número de inimigos por spawn
+
 	enemies_per_spawn = min(
 		max_enemies_per_spawn,
-		1 + int((player_level - 1) / 2)  # +1 inimigo a cada 2 níveis
+		1 + int((player_level - 1) / 2)
 	)
-	
-	# Debug info (remover depois)
-	if Engine.get_process_frames() % 300 == 0:  # A cada 5 segundos
+
+	if Engine.get_process_frames() % 300 == 0:
 		print("Nível: ", player_level, " | Timer: ", snappedf(current_spawn_timer, 0.1), "s | Inimigos/spawn: ", enemies_per_spawn)
 
 func spawn_enemies_wave():
-	# Spawnar múltiplos inimigos
 	for i in range(enemies_per_spawn):
 		spawn_single_enemy()
-		
-		# Pequeno delay entre cada inimigo da wave
+
 		if i < enemies_per_spawn - 1:
 			await get_tree().create_timer(0.1).timeout
 
@@ -81,8 +73,7 @@ func spawn_single_enemy():
 			return
 		
 		attempts += 1
-	
-	# Se não encontrou posição válida, spawnar na distância mínima
+
 	var fallback_angle = randf() * 2 * PI
 	var fallback_pos = player.position + Vector2(
 		cos(fallback_angle) * min_spawn_distance,
@@ -112,8 +103,6 @@ func create_enemy_at_position(spawn_pos: Vector2):
 	
 	get_parent().add_child(enemy_instance)
 
-
-# Função para mostrar estatísticas de spawn (debug)
 func get_spawn_info() -> String:
 	var player_level = player.get_level() if player else 1
 	return "Nível " + str(player_level) + " | Timer: " + str(snappedf(current_spawn_timer, 0.1)) + "s | Inimigos: " + str(enemies_per_spawn)
