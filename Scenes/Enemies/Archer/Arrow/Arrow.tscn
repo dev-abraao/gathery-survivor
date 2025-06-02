@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://bbyy841kcvdjr"]
+[gd_scene load_steps=3 format=3 uid="uid://bbyy841kcvdjr"]
+
+[ext_resource type="Texture2D" uid="uid://dj72stjir6xi3" path="res://Assets/Factions/Knights/Troops/Archer/Arrow/Arrow.png" id="1_tw5rp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62jlb"]
+size = Vector2(101, 16)
 
 [node name="Arrow" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18.5, 0)
+shape = SubResource("RectangleShape2D_62jlb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(18.5, 0)
+scale = Vector2(1.57813, 1)
+texture = ExtResource("1_tw5rp")

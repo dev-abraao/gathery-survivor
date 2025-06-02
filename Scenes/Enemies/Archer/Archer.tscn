@@ -1,3 +1,83 @@
-[gd_scene format=3 uid="uid://c3p2tc4augo0y"]
+[gd_scene load_steps=13 format=3 uid="uid://c3p2tc4augo0y"]
 
-[node name="Archer" type="Node2D"]
+[ext_resource type="Script" uid="uid://b1a80e5jv2fl4" path="res://Scenes/Enemies/Archer/archer.gd" id="1_v2wp6"]
+[ext_resource type="Texture2D" uid="uid://i81tkdxn2qlp" path="res://Assets/Factions/Knights/Troops/Archer/Red/Archer_Red.png" id="2_vdg1n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qe04"]
+radius = 26.0
+height = 70.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n3br"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(0, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dx76"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(192, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avaet"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(384, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrm3r"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(576, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qcgx"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(768, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ado5"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(960, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bpry"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(1152, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q8dv"]
+atlas = ExtResource("2_vdg1n")
+region = Rect2(1344, 768, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_te77c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n3br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dx76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avaet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrm3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qcgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ado5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bpry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q8dv")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[node name="Archer" type="CharacterBody2D"]
+script = ExtResource("1_v2wp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7qe04")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_te77c")
+animation = &"shoot"
+frame_progress = 0.434643
