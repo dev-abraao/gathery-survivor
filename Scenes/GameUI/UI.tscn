@@ -8,6 +8,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djlt"]
 bg_color = Color(0.466667, 0.32549, 0.588235, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3djlt"]
 
