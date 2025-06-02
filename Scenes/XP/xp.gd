@@ -5,7 +5,7 @@ extends Area2D
 
 var xp_value: int = 1
 var collection_range: float = 150.0 
-var move_speed: float = 150.0
+var move_speed: float = 250.0
 var is_being_collected: bool = false
 var player: CharacterBody2D
 
