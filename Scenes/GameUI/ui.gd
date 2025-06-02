@@ -16,8 +16,8 @@ func _ready() -> void:
 	if player:
 		var health = player.get_health()
 		var max_health = player.get_max_health()
-		$HealthBar.value = health
-		$HealthBar.max_value = max_health
+		$HP/HealthBar.value = health
+		$HP/HealthBar.max_value = max_health
 		$XPBar.value = player.get_xp()
 		$XPBar.max_value = player.get_xp_to_next_level()
 
@@ -26,12 +26,12 @@ func set_health(new_health) -> void:
 		health_tween.kill()
 	
 	health_tween = create_tween()
-	health_tween.tween_property($HealthBar, "value", new_health, animation_duration)
+	health_tween.tween_property($HP/HealthBar, "value", new_health, animation_duration)
 	
 	print("UI: Health updated to ", new_health)
 
 func set_max_health(new_max_health) -> void:
-	$HealthBar.max_value = new_max_health
+	$HP/HealthBar.max_value = new_max_health
 	print("UI: Max health updated to ", new_max_health)
 
 func set_xp(new_xp) -> void:

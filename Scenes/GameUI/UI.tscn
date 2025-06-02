@@ -1,16 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkk15ksce75wg"]
+[gd_scene load_steps=7 format=3 uid="uid://dkk15ksce75wg"]
 
 [ext_resource type="Script" uid="uid://cwp6nxwu8t8r3" path="res://Scenes/GameUI/ui.gd" id="1_nwkwo"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3djlt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yvyt"]
-bg_color = Color(4.33177e-07, 0.726068, 0.178104, 1)
+[ext_resource type="Texture2D" uid="uid://dacmyq0ypdwd7" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="2_3djlt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwkwo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djlt"]
-bg_color = Color(0, 0.640883, 0.934052, 1)
+bg_color = Color(0.466667, 0.32549, 0.588235, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3djlt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yvyt"]
+bg_color = Color(0, 0.847059, 0.164706, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0862745, 0.109804, 0.180392, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -23,15 +34,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nwkwo")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = 13.0
-offset_right = 249.0
-offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_3djlt")
-theme_override_styles/fill = SubResource("StyleBoxFlat_7yvyt")
-show_percentage = false
-
 [node name="XPBar" type="ProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -39,7 +41,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 13.0
-offset_top = -19.0
+offset_top = -22.0
 offset_right = 13.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -47,3 +49,30 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_nwkwo")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3djlt")
 value = 50.0
 show_percentage = false
+
+[node name="HP" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HPbg" type="Sprite2D" parent="HP"]
+position = Vector2(128, 54)
+texture = ExtResource("2_3djlt")
+
+[node name="HealthBar" type="ProgressBar" parent="HP"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 29.0
+offset_right = 209.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_3djlt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7yvyt")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HP"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 35.0
+offset_right = 156.0
+offset_bottom = 58.0

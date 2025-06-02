@@ -22,7 +22,7 @@ func _ready():
         print("❌ Arquivo de música NÃO encontrado em:", music_path)
         print("❌ Verifique se o arquivo existe na pasta Audio/Music/")
 
-func _process(delta):
+func _process(_delta):
     if Engine.get_process_frames() % 300 == 0:
         if stream:
             print("🎵 Status - Playing:", playing, "| Position:", snappedf(get_playback_position(), 1), "s | Volume:", volume_db, "dB")

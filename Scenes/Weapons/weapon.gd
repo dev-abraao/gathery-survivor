@@ -17,7 +17,6 @@ func _ready():
 
 	player = get_tree().get_first_node_in_group("Player")
 	if not player:
-		print("Player não encontrado!")
 		return
 
 	if not body_entered.is_connected(_on_body_entered):

@@ -58,7 +58,6 @@ func move_towards_player(delta):
     
     # Verificar se chegou muito perto do player
     var distance = global_position.distance_to(player.global_position)
-    print("XP se movendo... Distância: ", distance)
     
     if distance < 30:  # Quando muito próximo, coleta automaticamente
         collect_xp()

@@ -41,7 +41,7 @@ func connect_to_ui():
 	setup_walk_sound()
 
 func setup_walk_sound():
-	var walk_sound_path = "res://Audio/SFX/walk.wav"
+	var walk_sound_path = "res://Audio/SFX/Walk.ogg"
 	var walk_audio = load(walk_sound_path)
 	
 	if walk_audio and walk_sound:
