@@ -106,7 +106,8 @@ func take_damage(amount: int):
 	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	
 	if current_health <= 0:
-		die()
+		# Defer the death to avoid physics conflicts
+		call_deferred("die")
 
 func die():
 	if is_dead:
@@ -120,7 +121,9 @@ func die():
 	set_collision_layer(0)
 	set_collision_mask(0)
 	remove_from_group("enemies")
-	drop_xp()
+	
+	# Defer XP drop to avoid physics query conflicts
+	call_deferred("drop_xp")
 
 	animated_sprite.play("death")
 

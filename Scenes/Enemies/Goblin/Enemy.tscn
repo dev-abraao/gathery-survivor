@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dinn0mf67uaaf" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="3_2hac7"]
 [ext_resource type="AudioStream" uid="uid://bhyplyl2q6tkp" path="res://Audio/SFX/Hit.wav" id="4_xr3qn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
-size = Vector2(24, 5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rmd3q"]
+radius = 25.0
+height = 61.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24dk6"]
 atlas = ExtResource("2_2hac7")
@@ -266,8 +267,8 @@ animations = [{
 script = ExtResource("1_s7bn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 27.5)
-shape = SubResource("RectangleShape2D_rj586")
+position = Vector2(-2, 0.5)
+shape = SubResource("CapsuleShape2D_rmd3q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_24dk6")

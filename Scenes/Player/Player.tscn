@@ -209,7 +209,6 @@ animations = [{
 size = Vector2(44.5, 23)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(-1, 0)
 script = ExtResource("1_kpjcp")
 
 [node name="Camera2D" type="Camera2D" parent="."]

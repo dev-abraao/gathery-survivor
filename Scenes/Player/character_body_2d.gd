@@ -1,13 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 250.0
-var health = 200.0
-var max_health = 200.0
-var is_dead = false
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
 @onready var level_up_menu_scene = preload("res://Scenes/Leveling Menu/level_up_menu.tscn")
+@onready var ui = get_tree().get_first_node_in_group("UI")
 @onready var walk_sound: AudioStreamPlayer2D = $WalkSound  # ← Adicionar esta linha
 
 var weapons: Array = []
@@ -17,6 +13,10 @@ var xp_to_next_level: int = 10
 var xp_base: int = 10
 var xp_multiplier: float = 1.5
 var current_speed: float = 250.0
+var health = 200.0
+var max_health = 200.0
+var is_dead = false
+
 var damage_multiplier: float = 1.0
 var rotation_multiplier: float = 1.0
 
@@ -25,6 +25,16 @@ var is_walking: bool = false
 func _ready():
 	add_to_group("Player")
 	call_deferred("setup_weapon")
+	call_deferred("connect_to_ui")
+
+func connect_to_ui():
+	ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.set_max_health(max_health)
+		ui.set_health(health)
+	else:
+		await get_tree().create_timer(0.5).timeout
+		connect_to_ui()
 	setup_walk_sound()
 
 func setup_walk_sound():
@@ -80,7 +90,7 @@ func redistribute_weapons():
 func take_damage(amount: float):
 	var new_health = health - amount
 
-	modulate = Color.YELLOW
+	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	
@@ -89,6 +99,8 @@ func take_damage(amount: float):
 		is_dead = true
 	else:
 		health = new_health
+		if ui:
+			ui.set_health(health)
 		print("Vida do player: ", health, "/", max_health)
 
 func die():
@@ -97,6 +109,9 @@ func die():
 	set_process_input(false)
 	set_physics_process(false)
 	velocity = Vector2.ZERO
+
+	if ui:
+		ui.set_health(0)
 	
 	for weapon in weapons:
 		if is_instance_valid(weapon):
@@ -114,6 +129,8 @@ func die():
 func gain_xp(amount: int):
 	current_xp += amount
 	print("Ganhou ", amount, " XP! Total: ", current_xp, "/", xp_to_next_level)
+	if ui:
+		ui.set_xp(current_xp)
 
 	while current_xp >= xp_to_next_level:
 		level_up_player()
@@ -134,6 +151,10 @@ func upgrade_health():
 	health = max_health  # Heal completo
 	print("❤️ Vida máxima aumentada para: ", max_health)
 	create_upgrade_effect(Color.GREEN)
+
+	if ui:
+		ui.set_max_health(max_health)
+		ui.set_health(health)
 
 func upgrade_speed():
 	current_speed += 50.0
@@ -181,6 +202,9 @@ func level_up_player():
 	current_level += 1
 	
 	xp_to_next_level = int(xp_base * pow(xp_multiplier, current_level - 1))
+	if ui:
+		ui.set_xp_to_next_level(xp_to_next_level)
+		ui.set_xp(current_xp)
 	
 	print("🎉 *** LEVEL UP! *** Nível ", current_level)
 	create_upgrade_effect(Color.GOLD)
@@ -198,6 +222,17 @@ func get_damage_info() -> String:
 
 func get_speed_info() -> String:
 	return str(snappedf(3.0 * rotation_multiplier, 0.1))
+
+func get_health() -> int:
+	return int(health)
+
+func get_max_health() -> int:
+	return int(max_health)
+
+func get_xp() -> int:
+	return current_xp
+func get_xp_to_next_level() -> int:
+	return xp_to_next_level
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
