@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://b3b80psk6gogb"]
+[gd_scene load_steps=34 format=3 uid="uid://b3b80psk6gogb"]
 
 [ext_resource type="Script" uid="uid://c7awqbsn7er8y" path="res://Scenes/Player/character_body_2d.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://dinn0mf67uaaf" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="2_h54ih"]
 [ext_resource type="Texture2D" uid="uid://bb8khhoi134e8" path="res://Assets/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="2_kne1u"]
 [ext_resource type="AudioStream" uid="uid://cb6jpk6de2jra" path="res://Audio/SFX/Walk.ogg" id="4_ude3g"]
+[ext_resource type="AudioStream" uid="uid://dpawc61tkstxp" path="res://Audio/SFX/HitPlayer.mp3" id="5_jmcll"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ude3g"]
 atlas = ExtResource("2_h54ih")
@@ -236,5 +237,9 @@ shape = SubResource("RectangleShape2D_kpjcp")
 [node name="Timer" type="Timer" parent="Node2D"]
 
 [node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(1, 1)
+position = Vector2(2, 4)
 stream = ExtResource("4_ude3g")
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(12, 4)
+stream = ExtResource("5_jmcll")

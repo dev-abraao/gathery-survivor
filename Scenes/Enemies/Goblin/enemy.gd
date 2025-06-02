@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_parent().get_node("Player")
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var damage_sound: AudioStreamPlayer2D = $DamageSound  # ← Adicionar esta linha
+@onready var damage_sound: AudioStreamPlayer2D = $DamageSound 
 
 const speed = 100.0
 const attack_range = 100.0
@@ -18,8 +18,7 @@ func _ready():
 	add_to_group("enemies")
 	current_health = max_health
 	
-	# Carregar som de dano
-	var damage_sound_path = "res://Audio/SFX/hi3.wav"
+	var damage_sound_path = "res://Audio/SFX/Hit.wav"
 	var damage_audio = load(damage_sound_path)
 	
 	if damage_audio and damage_sound:

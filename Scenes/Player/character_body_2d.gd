@@ -4,7 +4,9 @@ extends CharacterBody2D
 @onready var weapon_scene = preload("res://Scenes/Weapons/weapon.tscn")
 @onready var level_up_menu_scene = preload("res://Scenes/Leveling Menu/level_up_menu.tscn")
 @onready var ui = get_tree().get_first_node_in_group("UI")
-@onready var walk_sound: AudioStreamPlayer2D = $WalkSound  # ← Adicionar esta linha
+@onready var walk_sound: AudioStreamPlayer2D = $WalkSound
+@onready var damage_sound: AudioStreamPlayer2D = $DamageSound
+@onready var damage_audio = preload("res://Audio/SFX/HitPlayer.mp3")
 
 var weapons: Array = []
 var current_level: int = 1
@@ -26,6 +28,7 @@ func _ready():
 	add_to_group("Player")
 	call_deferred("setup_weapon")
 	call_deferred("connect_to_ui")
+	setup_damage_sound()
 
 func connect_to_ui():
 	ui = get_tree().get_first_node_in_group("UI")
@@ -45,8 +48,7 @@ func setup_walk_sound():
 		walk_sound.stream = walk_audio
 		walk_sound.volume_db = -15.0
 		
-		# CORREÇÃO: Usar os tipos corretos do Godot 4
-		if walk_audio is AudioStreamWAV:  # ← Mudou de AudioStreamWav para AudioStreamWAV
+		if walk_audio is AudioStreamWAV:
 			walk_audio.loop_mode = AudioStreamWAV.LOOP_FORWARD
 		elif walk_audio is AudioStreamOggVorbis:
 			walk_audio.loop = true
@@ -54,6 +56,14 @@ func setup_walk_sound():
 		print("✅ Som de passos carregado com loop!")
 	else:
 		print("❌ Som de passos não encontrado em:", walk_sound_path)
+
+func setup_damage_sound():
+	if damage_audio and damage_sound:
+		damage_sound.stream = damage_audio
+		damage_sound.volume_db = 0
+		print("✅ Som de dano pré-carregado!")
+	else:
+		print("❌ Som de dano do player não encontrado!")  # ← Remover referência ao damage_sound_path
 
 func setup_weapon():
 	create_weapon()
@@ -88,12 +98,20 @@ func redistribute_weapons():
 				print("Arma ", i, " reposicionada - Ângulo: ", rad_to_deg(angle), "° - Raio: ", radius)
 
 func take_damage(amount: float):
-	var new_health = health - amount
-
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	
+	if damage_sound and damage_sound.stream:
+		if damage_sound.playing:
+			damage_sound.stop()
+		
+		# Começar direto em 0.2 segundos
+		damage_sound.play(0.2)  # ← Parâmetro from_position
+		print("🔊 Player levou dano! Som iniciado em 0.2s!")
+
+	var new_health = health - amount
+
 	if new_health <= 0:
 		die()
 		is_dead = true
