@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://c322uym7gg2ac"]
 
 [ext_resource type="Script" uid="uid://cxot7hsw65iap" path="res://Scenes/Weapons/weapon.gd" id="1_weapon"]
-[ext_resource type="Texture2D" uid="uid://t8nybx54rvs3" path="res://Assets/sword.png" id="2_8xwfw"]
+[ext_resource type="Texture2D" uid="uid://bqsmigtqrai5x" path="res://Assets/sword2.png" id="2_07w45"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_07w45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fy1u"]
-size = Vector2(68.0132, 34.248)
+size = Vector2(92.0963, 34.248)
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_weapon")
@@ -15,10 +15,11 @@ script = ExtResource("1_weapon")
 texture_filter = 5
 material = SubResource("CanvasItemMaterial_07w45")
 position = Vector2(-1.52588e-05, 1.52588e-05)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_8xwfw")
+rotation = 0.0698132
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("2_07w45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.722131, -1.25156)
-rotation = 2.41205
+position = Vector2(1.27787, -1.74844)
+rotation = 2.40855
 shape = SubResource("RectangleShape2D_3fy1u")
