@@ -165,7 +165,7 @@ func show_level_up_menu():
 
 # UPGRADES DO PLAYER
 func upgrade_health():
-	max_health += 30.0
+	max_health += 50.0
 	health = max_health  # Heal completo
 	print("❤️ Vida máxima aumentada para: ", max_health)
 	create_upgrade_effect(Color.GREEN)

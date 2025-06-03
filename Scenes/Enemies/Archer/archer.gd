@@ -6,9 +6,9 @@ extends CharacterBody2D
 @onready var damage_sound: AudioStreamPlayer2D = $DamageSound 
 
 
-const attack_cooldown = 3
+const attack_cooldown = 5
 var is_attacking = false
-var attack_timer = 0.0
+var attack_timer = 3
 var max_health = 20
 var current_health = 30
 var is_dead = false
@@ -19,6 +19,8 @@ func _ready():
 	
 	var damage_sound_path = "res://Audio/SFX/HitPlayer.mp3"
 	var damage_audio = load(damage_sound_path)
+
+	animated_sprite.play("idle")
 	
 	if damage_audio and damage_sound:
 		damage_sound.stream = damage_audio

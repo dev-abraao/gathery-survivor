@@ -27,7 +27,7 @@ func _ready():
 
 func update_button_texts():
     if player:
-        health_button.text = "❤️ +30 Health\nCurrent: " + str(int(player.health)) + "/" + str(int(player.max_health))
+        health_button.text = "❤️ +50 Health\nCurrent: " + str(int(player.health)) + "/" + str(int(player.max_health))
         speed_button.text = "⚡ +50 Speed\nCurrent: " + str(int(player.current_speed))
         damage_button.text = "💥 +50% Damage\nCurrent: " + player.get_damage_info()
         rotation_button.text = "🌪️ +40% Rotation\nCurrent: " + player.get_speed_info()

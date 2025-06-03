@@ -24,8 +24,8 @@ var max_spawn_distance = 800
 func _ready():
 	print("Spawner iniciado!")
 	enemies = [
-	{"scene": goblin_scene},
-	{"scene": archer_scene}
+	{"scene": goblin_scene, "weight": 70},
+	{"scene": archer_scene,	"weight": 30}
 ]
 	
 
@@ -105,13 +105,27 @@ func is_valid_spawn_position(world_pos: Vector2) -> bool:
 	return true
 
 func create_enemy_at_position(spawn_pos: Vector2):
-	var enemy_index = randi_range(0, enemies.size() -1)
-	var selected_enemy = enemies[enemy_index]
-	var enemy_instance = selected_enemy["scene"].instantiate()
+	var selected_enemy = select_enemy_by_weight()
+	var enemy_instance = selected_enemy.instantiate()
 	enemy_instance.position = spawn_pos
 	enemy_instance.z_index = 1
 	
 	get_parent().add_child(enemy_instance)
+
+func select_enemy_by_weight():
+	var total_weight = 0
+	for enemy in enemies:
+		total_weight += enemy["weight"]
+	
+	var random_value = randf() * total_weight
+	var cumulative_weight = 0
+	
+	for enemy in enemies:
+		cumulative_weight += enemy["weight"]
+		if random_value < cumulative_weight:
+			return enemy["scene"]
+	
+	return goblin_scene  # Fallback if no enemy is selected
 
 func get_spawn_info() -> String:
 	var player_level = player.get_level() if player else 1

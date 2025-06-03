@@ -1,7 +1,7 @@
 extends Area2D
 
-var speed: float = 500.0
-var damage: int = 50
+var speed: float = 350.0
+var damage: int = 25
 var direction: Vector2
 var lifetime: float = 5.0  
 @onready var sprite = $Sprite2D

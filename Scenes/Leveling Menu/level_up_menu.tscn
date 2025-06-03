@@ -116,7 +116,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
-text = "❤️ +30 Health
+text = "❤️ +50 Health
 Restore to full HP"
 
 [node name="SpeedButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection/PlayerPanel/PlayerOptions"]

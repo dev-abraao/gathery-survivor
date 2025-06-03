@@ -272,7 +272,7 @@ shape = SubResource("CapsuleShape2D_rmd3q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_24dk6")
-animation = &"attack"
+animation = &"death"
 
 [node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1, 0)
