@@ -1,13 +1,16 @@
 extends Node2D
 
 @onready var player = get_parent().get_node("Player")
-@onready var enemy_scene = preload("res://Scenes/Enemies/Goblin/Enemy.tscn")
+@onready var goblin_scene = preload("res://Scenes/Enemies/Goblin/Enemy.tscn")
+@onready var archer_scene = preload("res://Scenes/Enemies/Archer/Archer.tscn")
 @onready var world_tilemap = get_parent().get_node("World")
 
-# Configurações de spawn base
+
+var enemies = []
 var base_spawn_timer: float = 2.5
 var current_spawn_timer: float = 2.5
 var time_elapsed: float = 0.0
+
 
 # Dificuldade e spawn dinâmico
 var min_spawn_timer: float = 0.2
@@ -16,10 +19,15 @@ var enemies_per_spawn: int = 1
 var max_enemies_per_spawn: int = 5
 
 var min_spawn_distance = 750
-var max_spawn_distance = 900
+var max_spawn_distance = 800
 
 func _ready():
 	print("Spawner iniciado!")
+	enemies = [
+	{"scene": goblin_scene},
+	{"scene": archer_scene}
+]
+	
 
 func _process(delta):
 	time_elapsed += delta
@@ -97,9 +105,11 @@ func is_valid_spawn_position(world_pos: Vector2) -> bool:
 	return true
 
 func create_enemy_at_position(spawn_pos: Vector2):
-	var enemy_instance = enemy_scene.instantiate()
-	enemy_instance.z_index = 1
+	var enemy_index = randi_range(0, enemies.size() -1)
+	var selected_enemy = enemies[enemy_index]
+	var enemy_instance = selected_enemy["scene"].instantiate()
 	enemy_instance.position = spawn_pos
+	enemy_instance.z_index = 1
 	
 	get_parent().add_child(enemy_instance)
 

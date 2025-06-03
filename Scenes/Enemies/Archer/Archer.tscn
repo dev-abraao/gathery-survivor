@@ -42,28 +42,28 @@ region = Rect2(1344, 768, 192, 192)
 [sub_resource type="SpriteFrames" id="SpriteFrames_te77c"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_2n3br")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_0dx76")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_avaet")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_mrm3r")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_0qcgx")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_6ado5")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_2bpry")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_1q8dv")
 }],
 "loop": true,
@@ -72,6 +72,7 @@ animations = [{
 }]
 
 [node name="Archer" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_v2wp6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
