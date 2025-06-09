@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3p2tc4augo0y"]
+[gd_scene load_steps=32 format=3 uid="uid://c3p2tc4augo0y"]
 
 [ext_resource type="Script" uid="uid://b1a80e5jv2fl4" path="res://Scenes/Enemies/Archer/archer.gd" id="1_v2wp6"]
 [ext_resource type="Texture2D" uid="uid://dinn0mf67uaaf" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="2_7qe04"]
@@ -112,14 +112,6 @@ region = Rect2(768, 768, 192, 192)
 atlas = ExtResource("2_vdg1n")
 region = Rect2(960, 768, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bpry"]
-atlas = ExtResource("2_vdg1n")
-region = Rect2(1152, 768, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1q8dv"]
-atlas = ExtResource("2_vdg1n")
-region = Rect2(1344, 768, 192, 192)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_te77c"]
 animations = [{
 "frames": [{
@@ -193,31 +185,25 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_2n3br")
 }, {
-"duration": 2.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_0dx76")
 }, {
-"duration": 2.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_avaet")
 }, {
-"duration": 2.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_mrm3r")
 }, {
-"duration": 2.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_0qcgx")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_6ado5")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_2bpry")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_1q8dv")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
 "speed": 10.0
 }]

@@ -16,6 +16,8 @@ var is_dead = false
 func _ready():
 	add_to_group("enemies")
 	current_health = max_health
+
+	animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 	
 	var damage_sound_path = "res://Audio/SFX/HitPlayer.mp3"
 	var damage_audio = load(damage_sound_path)
@@ -54,8 +56,14 @@ func attack():
 	attack_timer = attack_cooldown
 	
 	animated_sprite.play("shoot")
-	
-	call_deferred("spawn_arrow")
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite.animation == "shoot":
+		spawn_arrow()
+		is_attacking = false
+		animated_sprite.play("idle")
+		print("Arqueiro atirou uma flecha!")
+
 
 func spawn_arrow():
 	if is_dead or not player:
@@ -66,7 +74,6 @@ func spawn_arrow():
 	var direction_to_player = (player.global_position - global_position).normalized()
 	arrow.set_direction(direction_to_player)
 	get_parent().add_child(arrow)
-	is_attacking = false
 
 func take_damage(amount: int):
 	if is_dead:
@@ -120,3 +127,5 @@ func drop_xp():
 	xp_orb.set_xp_value(xp_amount)
 	
 	get_parent().add_child(xp_orb)
+
+
