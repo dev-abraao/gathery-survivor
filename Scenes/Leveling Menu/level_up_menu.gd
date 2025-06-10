@@ -9,12 +9,10 @@ extends Control
 var player: CharacterBody2D
 
 func _ready():
-    print("Menu de level up carregado!")
     get_tree().paused = true
     
     player = get_tree().get_first_node_in_group("Player")
     
-    # Conectar botões
     health_button.pressed.connect(_on_health_upgrade)
     speed_button.pressed.connect(_on_speed_upgrade)
     damage_button.pressed.connect(_on_damage_upgrade)
@@ -27,18 +25,18 @@ func _ready():
 
 func update_button_texts():
     if player:
-        health_button.text = "❤️ +50 Health\nCurrent: " + str(int(player.health)) + "/" + str(int(player.max_health))
-        speed_button.text = "⚡ +50 Speed\nCurrent: " + str(int(player.current_speed))
-        damage_button.text = "💥 +50% Damage\nCurrent: " + player.get_damage_info()
-        rotation_button.text = "🌪️ +40% Rotation\nCurrent: " + player.get_speed_info()
+        health_button.text = "+50 Health\nCurrent: " + str(int(player.health)) + "/" + str(int(player.max_health))
+        speed_button.text = "+50 Speed\nCurrent: " + str(int(player.current_speed))
+        damage_button.text = "+50% Damage\nCurrent: " + player.get_damage_info()
+        rotation_button.text = "+40% Rotation\nCurrent: " + player.get_speed_info()
         
         var weapon_count = player.get_weapon_count()
-        new_weapon_button.text = "⚔️ New Weapon\nActive: " + str(weapon_count) + "/4"
+        new_weapon_button.text = "New Weapon\nActive: " + str(weapon_count) + "/4"
 
 func update_button_availability():
     if player and player.get_weapon_count() >= 4:
         new_weapon_button.disabled = true
-        new_weapon_button.text = "❌ Max Weapons\n(4/4 active)"
+        new_weapon_button.text = "Max Weapons\n(4/4 active)"
 
 func create_entrance_effect():
     scale = Vector2(0.5, 0.5)

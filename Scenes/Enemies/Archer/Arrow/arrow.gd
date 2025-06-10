@@ -30,7 +30,6 @@ func _on_body_entered(body):
     if body.is_in_group("Player"):
         if body.has_method("take_damage"):
             body.take_damage(damage)
-            print("Arrow hit player for ", damage, " damage!")
         
         queue_free()
     elif body.has_method("take_damage") and not body.is_in_group("enemies"):

@@ -17,9 +17,10 @@ func _ready():
 	add_to_group("enemies")
 	current_health = max_health
 
-	animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	if not animated_sprite.animation_finished.is_connected(_on_animated_sprite_2d_animation_finished):
+		animated_sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 	
-	var damage_sound_path = "res://Audio/SFX/HitPlayer.mp3"
+	var damage_sound_path = "res://Audio/SFX/Hit.wav"
 	var damage_audio = load(damage_sound_path)
 
 	animated_sprite.play("idle")
@@ -27,9 +28,6 @@ func _ready():
 	if damage_audio and damage_sound:
 		damage_sound.stream = damage_audio
 		damage_sound.volume_db = -10.0
-		print("✅ Som de dano carregado para inimigo")
-	else:
-		print("❌ Som de dano não encontrado em:", damage_sound_path)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -62,7 +60,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		spawn_arrow()
 		is_attacking = false
 		animated_sprite.play("idle")
-		print("Arqueiro atirou uma flecha!")
 
 
 func spawn_arrow():
@@ -80,11 +77,9 @@ func take_damage(amount: int):
 		return
 		
 	current_health -= amount
-	print("Inimigo levou ", amount, " de dano! Vida: ", current_health)
 	
 	if damage_sound and damage_sound.stream:
 		damage_sound.play()
-		print("🔊 Som de dano tocado!")
 	
 	modulate = Color.RED
 	var tween = create_tween()
@@ -98,7 +93,6 @@ func die():
 		return
 
 	is_dead = true
-	print("Inimigo morreu!")
 
 	velocity = Vector2.ZERO
 	is_attacking = false

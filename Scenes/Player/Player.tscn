@@ -206,8 +206,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjcp"]
-size = Vector2(44.5, 23)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jmcll"]
+radius = 17.0
+height = 42.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_kpjcp")
@@ -222,15 +223,13 @@ editor_draw_limits = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k73cj")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.149783
 speed_scale = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0.75, 8.5)
-shape = SubResource("RectangleShape2D_kpjcp")
+shape = SubResource("CapsuleShape2D_jmcll")
 
 [node name="Node2D" type="Node2D" parent="."]
 

@@ -13,8 +13,6 @@ var hit_cooldown: float = 0.5
 var enemies_hit: Dictionary = {}
 
 func _ready():
-	print("Weapon iniciada!")
-
 	player = get_tree().get_first_node_in_group("Player")
 	if not player:
 		return

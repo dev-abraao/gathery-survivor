@@ -65,7 +65,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0, 1)
 theme_override_font_sizes/font_size = 48
-text = "🎉 LEVEL UP! 🎉"
+text = " LEVEL UP! "
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
@@ -90,7 +90,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
 theme_override_font_sizes/font_size = 28
-text = "🧙 PLAYER"
+text = " PLAYER"
 horizontal_alignment = 1
 
 [node name="PlayerPanel" type="Panel" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection"]
@@ -116,7 +116,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
-text = "❤️ +50 Health
+text = " +50 Health
 Restore to full HP"
 
 [node name="SpeedButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/PlayerSection/PlayerPanel/PlayerOptions"]
@@ -125,7 +125,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
-text = "⚡ +20% Speed
+text = " +20% Speed
 Move faster"
 
 [node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer"]
@@ -139,7 +139,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 28
-text = "⚔️ WEAPONS"
+text = " WEAPONS"
 horizontal_alignment = 1
 
 [node name="WeaponPanel" type="Panel" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection"]
@@ -165,7 +165,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-text = "💥 +50% Damage
+text = " +50% Damage
 More powerful attacks"
 
 [node name="RotationButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection/WeaponPanel/WeaponOptions"]
@@ -174,7 +174,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-text = "🌪️ +30% Rotation
+text = " +30% Rotation
 Faster weapon spin"
 
 [node name="NewWeaponButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/OptionsContainer/WeaponSection/WeaponPanel/WeaponOptions"]
@@ -183,7 +183,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 0.8, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-text = "⚔️ New Weapon
+text = " New Weapon
 Add another sword"
 
 [node name="Footer" type="Label" parent="CenterContainer/Panel/VBoxContainer"]

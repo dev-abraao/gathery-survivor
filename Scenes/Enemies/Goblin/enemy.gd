@@ -24,9 +24,6 @@ func _ready():
 	if damage_audio and damage_sound:
 		damage_sound.stream = damage_audio
 		damage_sound.volume_db = -10.0  # Ajustar volume
-		print("✅ Som de dano carregado para inimigo")
-	else:
-		print("❌ Som de dano não encontrado em:", damage_sound_path)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -92,20 +89,15 @@ func take_damage(amount: int):
 		return
 		
 	current_health -= amount
-	print("Inimigo levou ", amount, " de dano! Vida: ", current_health)
 	
-	# TOCAR SOM DE DANO
 	if damage_sound and damage_sound.stream:
 		damage_sound.play()
-		print("🔊 Som de dano tocado!")
 	
-	# Efeito visual de dano
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	
 	if current_health <= 0:
-		# Defer the death to avoid physics conflicts
 		call_deferred("die")
 
 func die():
@@ -113,7 +105,6 @@ func die():
 		return
 
 	is_dead = true
-	print("Inimigo morreu!")
 
 	velocity = Vector2.ZERO
 	is_attacking = false
@@ -121,7 +112,6 @@ func die():
 	set_collision_mask(0)
 	remove_from_group("enemies")
 	
-	# Defer XP drop to avoid physics query conflicts
 	call_deferred("drop_xp")
 
 	animated_sprite.play("death")

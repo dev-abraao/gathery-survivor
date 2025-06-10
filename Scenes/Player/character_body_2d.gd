@@ -52,22 +52,14 @@ func setup_walk_sound():
 			walk_audio.loop_mode = AudioStreamWAV.LOOP_FORWARD
 		elif walk_audio is AudioStreamOggVorbis:
 			walk_audio.loop = true
-		
-		print("✅ Som de passos carregado com loop!")
-	else:
-		print("❌ Som de passos não encontrado em:", walk_sound_path)
 
 func setup_damage_sound():
 	if damage_audio and damage_sound:
 		damage_sound.stream = damage_audio
 		damage_sound.volume_db = 0
-		print("✅ Som de dano pré-carregado!")
-	else:
-		print("❌ Som de dano do player não encontrado!")  # ← Remover referência ao damage_sound_path
 
 func setup_weapon():
 	create_weapon()
-	print("Primeira arma criada!")
 
 func create_weapon():
 	var weapon = weapon_scene.instantiate()
@@ -81,7 +73,6 @@ func create_weapon():
 
 	redistribute_weapons()
 	
-	print("Arma criada! Total: ", weapons.size())
 
 func redistribute_weapons():
 	var total_weapons = weapons.size()
@@ -95,7 +86,6 @@ func redistribute_weapons():
 				var radius = 80.0
 				weapon.set_orbit_radius(radius)
 
-				print("Arma ", i, " reposicionada - Ângulo: ", rad_to_deg(angle), "° - Raio: ", radius)
 
 func take_damage(amount: float):
 	modulate = Color.RED
@@ -106,9 +96,7 @@ func take_damage(amount: float):
 		if damage_sound.playing:
 			damage_sound.stop()
 		
-		# Começar direto em 0.2 segundos
-		damage_sound.play(0.2)  # ← Parâmetro from_position
-		print("🔊 Player levou dano! Som iniciado em 0.2s!")
+		damage_sound.play(0.2)
 
 	var new_health = health - amount
 
@@ -119,7 +107,6 @@ func take_damage(amount: float):
 		health = new_health
 		if ui:
 			ui.set_health(health)
-		print("Vida do player: ", health, "/", max_health)
 
 func die():
 	if is_dead:
@@ -146,7 +133,6 @@ func die():
 
 func gain_xp(amount: int):
 	current_xp += amount
-	print("Ganhou ", amount, " XP! Total: ", current_xp, "/", xp_to_next_level)
 	if ui:
 		ui.set_xp(current_xp)
 
@@ -154,7 +140,6 @@ func gain_xp(amount: int):
 		level_up_player()
 
 func show_level_up_menu():
-	print("Mostrando menu de level up...")
 	
 	var canvas_layer = CanvasLayer.new()
 	canvas_layer.layer = 100
@@ -163,11 +148,9 @@ func show_level_up_menu():
 	var menu = level_up_menu_scene.instantiate()
 	canvas_layer.add_child(menu)
 
-# UPGRADES DO PLAYER
 func upgrade_health():
 	max_health += 50.0
-	health = max_health  # Heal completo
-	print("❤️ Vida máxima aumentada para: ", max_health)
+	health = max_health
 	create_upgrade_effect(Color.GREEN)
 
 	if ui:
@@ -176,19 +159,15 @@ func upgrade_health():
 
 func upgrade_speed():
 	current_speed += 50.0
-	print("⚡ Velocidade aumentada para: ", current_speed)
 	create_upgrade_effect(Color.CYAN)
 
-# UPGRADES DAS ARMAS
 func upgrade_weapon_damage():
-	damage_multiplier += 0.5  # +50% dano
+	damage_multiplier += 0.5  
 	
-	# Atualizar todas as armas
 	for weapon in weapons:
 		if is_instance_valid(weapon):
 			weapon.set_damage(int(10 * damage_multiplier))
 	
-	print("💥 Dano das armas aumentado! Dano atual: ", int(10 * damage_multiplier))
 	create_upgrade_effect(Color.RED)
 
 func upgrade_weapon_speed():
@@ -198,16 +177,13 @@ func upgrade_weapon_speed():
 		if is_instance_valid(weapon):
 			weapon.set_orbit_speed(3.0 * rotation_multiplier)
 	
-	print("🌪️ Velocidade de rotação aumentada! Velocidade atual: ", 3.0 * rotation_multiplier)
 	create_upgrade_effect(Color.YELLOW)
 
 func add_new_weapon():
 	if weapons.size() >= 4:
-		print("❌ Número máximo de armas atingido!")
 		return
 	
 	create_weapon()
-	print("⚔️ Nova arma adicionada!")
 	create_upgrade_effect(Color.MAGENTA)
 
 func create_upgrade_effect(color: Color):
@@ -224,7 +200,6 @@ func level_up_player():
 		ui.set_xp_to_next_level(xp_to_next_level)
 		ui.set_xp(current_xp)
 	
-	print("🎉 *** LEVEL UP! *** Nível ", current_level)
 	create_upgrade_effect(Color.GOLD)
 	show_level_up_menu()
 
@@ -283,9 +258,7 @@ func _physics_process(delta: float) -> void:
 func start_walking_sound():
 	if walk_sound and walk_sound.stream:
 		walk_sound.play()
-		print("🚶 Som de passos em loop iniciado!")
 
 func stop_walking_sound():
 	if walk_sound and walk_sound.playing:
 		walk_sound.stop()
-		print("🛑 Som de passos parado!")

@@ -12,7 +12,6 @@ var current_spawn_timer: float = 2.5
 var time_elapsed: float = 0.0
 
 
-# Dificuldade e spawn dinâmico
 var min_spawn_timer: float = 0.2
 var timer_reduction_per_level: float = 0.1
 var enemies_per_spawn: int = 1
@@ -22,7 +21,6 @@ var min_spawn_distance = 750
 var max_spawn_distance = 800
 
 func _ready():
-	print("Spawner iniciado!")
 	enemies = [
 	{"scene": goblin_scene, "weight": 70},
 	{"scene": archer_scene,	"weight": 30}
@@ -53,9 +51,6 @@ func update_difficulty():
 		max_enemies_per_spawn,
 		1 + int((player_level - 1) / 2)
 	)
-
-	if Engine.get_process_frames() % 300 == 0:
-		print("Nível: ", player_level, " | Timer: ", snappedf(current_spawn_timer, 0.1), "s | Inimigos/spawn: ", enemies_per_spawn)
 
 func spawn_enemies_wave():
 	for i in range(enemies_per_spawn):

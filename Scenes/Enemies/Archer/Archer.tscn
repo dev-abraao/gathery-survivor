@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://c3p2tc4augo0y"]
+[gd_scene load_steps=33 format=3 uid="uid://c3p2tc4augo0y"]
 
 [ext_resource type="Script" uid="uid://b1a80e5jv2fl4" path="res://Scenes/Enemies/Archer/archer.gd" id="1_v2wp6"]
 [ext_resource type="Texture2D" uid="uid://dinn0mf67uaaf" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="2_7qe04"]
 [ext_resource type="Texture2D" uid="uid://i81tkdxn2qlp" path="res://Assets/Factions/Knights/Troops/Archer/Red/Archer_Red.png" id="2_vdg1n"]
+[ext_resource type="AudioStream" uid="uid://bhyplyl2q6tkp" path="res://Audio/SFX/Hit.wav" id="4_7qe04"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qe04"]
 radius = 26.0
@@ -218,5 +219,9 @@ shape = SubResource("CapsuleShape2D_7qe04")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_te77c")
 animation = &"shoot"
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, 0)
+stream = ExtResource("4_7qe04")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
